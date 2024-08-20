@@ -17,5 +17,12 @@ exports.LoginPage= class LoginPage{
     async clickLoginButton(){
         await this.loginButton.click()
     }
+
+    //alternative login for helper: in Cypress project this was implemented by a custom command
+    async login(username,password){
+        await this.usernameField.fill(username)
+        await this.passwordField.fill(password)
+        await this.loginButton.click()
+    }
 }
 
