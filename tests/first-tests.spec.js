@@ -12,10 +12,13 @@ import { LoginPage } from '../pages/login-page';
   
     await page.goto(baseUrl);
 
-    await loginPage.usernameField.click()
-    await loginPage.usernameField.fill('standard_user');
-    await loginPage.passwordField.click();
-    await loginPage.passwordField.fill('secret_sauce');
+    await loginPage.typeUsername('standard_user')
+    await loginPage.typePassword('secret_sauce')
+
+   // await loginPage.usernameField.click()
+    //await loginPage.usernameField.fill('standard_user');
+    //await loginPage.passwordField.click();
+    //await loginPage.passwordField.fill('secret_sauce');
     await loginPage.loginButton.click();
     await expect(page).toHaveURL(inventoryPageURL)
   });
