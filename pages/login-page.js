@@ -13,5 +13,9 @@ exports.LoginPage= class LoginPage{
     async typePassword(password){
         await this.passwordField.fill(password)
     }
+
+    async clickLoginButton(){
+        await this.loginButton.click()
+    }
 }
 
