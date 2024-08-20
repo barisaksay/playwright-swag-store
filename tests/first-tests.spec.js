@@ -14,12 +14,7 @@ import { LoginPage } from '../pages/login-page';
 
     await loginPage.typeUsername('standard_user')
     await loginPage.typePassword('secret_sauce')
-
-   // await loginPage.usernameField.click()
-    //await loginPage.usernameField.fill('standard_user');
-    //await loginPage.passwordField.click();
-    //await loginPage.passwordField.fill('secret_sauce');
-    await loginPage.loginButton.click();
+    await loginPage.clickLoginButton()
     await expect(page).toHaveURL(inventoryPageURL)
   });
 
