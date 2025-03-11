@@ -4,9 +4,13 @@
       "username": "standard_user",
       "password": "secret_sauce"
     },
-    "invalidUser": {
+    "lockedoutUser": {
       "username": "locked_out_user",
       "password": "secret_sauce"
+    },
+    "invalidUser":{
+      "username":"invalid_username",
+      "password":"wrong_pwd"
     }
   }
 }

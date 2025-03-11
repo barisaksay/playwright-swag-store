@@ -15,10 +15,35 @@ test.describe('login tests', () => {
     })
 
     test('login with valid credentials',async({page})=>{
-        
         const user=testUsers.users.validUser;
 
         await loginPage.login(user.username,user.password);
-         expect(page.locator('.inventory_list')).toBeVisible();
+        expect(page.locator(productsPage.productsList)).toBeVisible();
     })
+
+    test('should not login for locked out user',async ({page}) => { 
+        const lockedoutUser=testUsers.users.lockedoutUser;
+
+        await loginPage.login(lockedoutUser.username,lockedoutUser.password);
+
+        await page.waitForSelector(loginPage.errorMessageElement, { state: 'visible' });
+        await page.locator(loginPage.errorMessageElement).waitFor();
+
+        expect(page.locator(loginPage.errorMessageElement)).toBeVisible();
+        expect(page.locator(loginPage.errorMessageElement)).toHaveText(loginPage.errorMessages.lockedOutUser);
+     })
+
+     test('should not login with invalid credentials', async({page}) => { 
+        const invalidUser=testUsers.users.invalidUser
+        
+        await loginPage.login(invalidUser.username,invalidUser.password);
+
+        await page.waitForSelector(loginPage.errorMessageElement, { state: 'visible' });
+        await page.locator(loginPage.errorMessageElement).waitFor();
+
+        expect(page.locator(loginPage.errorMessageElement)).toHaveText(loginPage.errorMessages.invalidCredentials);
+
+
+
+      })
  })

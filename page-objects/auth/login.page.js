@@ -9,6 +9,12 @@ class LoginPage extends BasePage{
         this.usernameInput ='#user-name';
         this.passwordInput='#password';
         this.loginButton='#login-button';
+        this.errorMessageElement='[data-test="error"]'
+        
+        this.errorMessages={
+            lockedOutUser:"Epic sadface: Sorry, this user has been locked out.",
+            invalidCredentials:"Epic sadface: Username and password do not match any user in this service"
+        }
     }
 
     async login(username,password){
