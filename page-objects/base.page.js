@@ -15,11 +15,15 @@ class BasePage{
     }
 
     async fillInputField(selector,text){
-        await this.page.locator(selector). fill(text)
+        await this.page.locator(selector).fill(text)
     }
 
     async getText(selector){
         return await this.page.locator(selector).textContent()
+    }
+
+    async isVisible(selector){
+        return await this.page.locator(selector).isVisible()
     }
 }
 

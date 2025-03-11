@@ -12,8 +12,10 @@ class LoginPage extends BasePage{
     }
 
     async login(username,password){
-        await fillInputField(this.usernameInput,username)
-        await fillInputField(this.passwordInput,password)
+        await this.fillInputField(this.usernameInput,username)
+        await this.fillInputField(this.passwordInput,password)
         await this.clickElement(this.loginButton)
     }
 }
+
+module.exports=LoginPage;
