@@ -22,3 +22,5 @@ class BasePage{
         return await this.page.locator(selector).textContent()
     }
 }
+
+    module.exports = BasePage;
