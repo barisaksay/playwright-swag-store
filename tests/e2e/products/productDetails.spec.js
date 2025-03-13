@@ -5,8 +5,7 @@ const ProductDetailsPage= require('../../../page-objects/products/productDetails
 const testUsers= require('../../../utils/test-data/test-users.json');
 const productDetails = require('../../../utils/test-data/products.json');
  
-
-test.describe('products page tests', () => { 
+test.describe('product details page tests', () => { 
     let loginPage;
     let productsPage;
     let productDetailsPage;
@@ -20,15 +19,13 @@ test.describe('products page tests', () => {
         await loginPage.login(user.username,user.password);
     })
 
-      test('should click item name', async({page}) => { 
-        const selectedItemName= await productsPage.selectItem(1);
+    test('should navigate back to products/inventory page', async({page}) => { 
+        await productsPage.selectItem(1);
+        await productDetailsPage.clickElement(productDetailsPage.backToInventoryButton);
 
-        await expect(page.locator(productDetailsPage.itemName)).toHaveText(selectedItemName)
-       })
+        await expect(page.locator(productsPage.productsList)).toBeVisible()
+        await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html")
 
-      test('correct number of items are displayed', async({page}) => { 
-        const numberOfProducts= productDetails.items.length
+     })
 
-        await expect(page.locator(productsPage.item)).toHaveCount(numberOfProducts)
-       })
  })

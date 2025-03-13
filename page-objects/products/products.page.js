@@ -5,7 +5,6 @@ class ProductsPage extends BasePage{
         super(page);
 
         //products page selectors
-
         this.productsList ='.inventory_list';
         this.item='[data-test="inventory-item"]',
         this.itemName='[data-test="inventory-item-name"]'
@@ -18,7 +17,6 @@ class ProductsPage extends BasePage{
         await this.page.locator(this.itemName).nth(n).click();
         return selectedItemName;
     }
-
 }
 
 module.exports=ProductsPage;
