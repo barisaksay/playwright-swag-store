@@ -36,4 +36,14 @@ test.describe('login tests', () => {
         
         await expect(page.locator(loginPage.errorMessageElement)).toHaveText(loginPage.errorMessages.invalidCredentials);
       })
+
+
+      test.only('should click item name', async({page}) => { 
+        const user=testUsers.users.validUser;
+        await loginPage.login(user.username,user.password);
+
+        const selectedItemName= await productsPage.selectItem(1);
+
+        await expect(page.locator('.inventory_details_name')).toHaveText(selectedItemName)
+       })
  })
