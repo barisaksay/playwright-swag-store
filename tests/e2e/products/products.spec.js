@@ -42,12 +42,21 @@ test.describe("products page tests", () => {
     await expect(page.locator(navigationMenu.cartCounter)).toBeVisible()
   });
 
-  test.only("should add multiple items to cart from inventory page ", async ({ page }) => {
+  test("should add multiple items to cart from inventory page ", async ({ page }) => {
     await productsPage.addItemToCart(0)
     await productsPage.addItemToCart(1)
 
     await expect(page.locator(navigationMenu.cartCounter)).toBeVisible()
     await expect(page.locator(navigationMenu.cartCounter)).toHaveText('2') //2 - because addItemToCart() is called twice.
+
+  });
+
+  test("should remove from cart via inventory page ", async ({ page }) => {
+    await productsPage.addItemToCart(0)
+    await productsPage.removeItemFromCart(0)
+
+    await expect(page.locator(navigationMenu.cartCounter)).not.toBeVisible()
+
 
   });
   
