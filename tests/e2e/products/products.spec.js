@@ -2,6 +2,7 @@ const { test, expect } = require("@playwright/test");
 const LoginPage = require("../../../page-objects/auth/login.page");
 const ProductsPage = require("../../../page-objects/products/products.page");
 const ProductDetailsPage = require("../../../page-objects/products/productDetails.page");
+const NavigationMenuComponent = require('../../../page-objects/components/navigation.component');
 const testUsers = require("../../../utils/test-data/test-users.json");
 const productDetails = require("../../../utils/test-data/products.json");
 
@@ -9,11 +10,13 @@ test.describe("products page tests", () => {
   let loginPage;
   let productsPage;
   let productDetailsPage;
+  let navigationMenu;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     productsPage = new ProductsPage(page);
     productDetailsPage = new ProductDetailsPage(page);
+    navigationMenu = new NavigationMenuComponent(page);
 
     await loginPage.navigate();
 
@@ -33,10 +36,19 @@ test.describe("products page tests", () => {
     await expect(page.locator(productDetailsPage.itemName)).toHaveText(selectedItemName);
   });
 
-  test.only("should add item to cart from inventory page ", async ({ page }) => {
-    await productsPage.addItemToCart(0);
+  test("should add item to cart from inventory page ", async ({ page }) => {
+    await productsPage.addItemToCart(0)
 
-    
+    await expect(page.locator(navigationMenu.cartCounter)).toBeVisible()
+  });
+
+  test.only("should add multiple items to cart from inventory page ", async ({ page }) => {
+    await productsPage.addItemToCart(0)
+    await productsPage.addItemToCart(1)
+
+    await expect(page.locator(navigationMenu.cartCounter)).toBeVisible()
+    await expect(page.locator(navigationMenu.cartCounter)).toHaveText('2') //2 - because addItemToCart() is called twice.
+
   });
   
 });
