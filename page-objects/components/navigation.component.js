@@ -3,18 +3,17 @@
     This component encapsulates navigation menu locators and related methods.
 */
 
-const BasePage= require('../base.page');
-
 class NavigationMenuComponent{
     constructor(page){
         this.page=page;
 
 
     //selectors
-    this.menuExpandButton='#react-burger-menu-btn'
+    this.menuExpandButton='#react-burger-menu-btn';
     this.inventoryButton='#inventory_sidebar_link';
     this.logoutButton='#logout_sidebar_link';
-    this.menuCollapseButton='#react-burger-cross-btn'
+    this.menuCollapseButton='#react-burger-cross-btn';
+    this.cartButton='a[data-test="shopping-cart-link]"';
     }
 
     async expandMenu(){
@@ -31,6 +30,10 @@ class NavigationMenuComponent{
 
     async logout(){
         await this.page.locator(this.logoutButton).click()
+    }
+
+    async goToCart() {
+        await this.page.locator(this.cartButton).click()
     }
 
 }
