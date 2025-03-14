@@ -10,7 +10,7 @@ test.describe('login tests', () => {
     test.beforeEach(async({page})=>{
         loginPage = new LoginPage(page);
         productsPage=new ProductsPage(page)
-        await loginPage.navigate("https://www.saucedemo.com/");
+        await loginPage.navigate();
         
     })
 
@@ -19,6 +19,7 @@ test.describe('login tests', () => {
 
         await loginPage.login(user.username,user.password);
         await expect(page.locator(productsPage.productsList)).toBeVisible();
+        await expect(page).toHaveURL(loginPage.baseURL+productsPage.productsURL)
     })
 
     test('should not login for locked out user',async ({page}) => { 
@@ -27,6 +28,7 @@ test.describe('login tests', () => {
         await loginPage.login(lockedoutUser.username,lockedoutUser.password);
         await expect(page.locator(loginPage.errorMessageElement)).toBeVisible();
         await expect(page.locator(loginPage.errorMessageElement)).toHaveText(loginPage.errorMessages.lockedOutUser);
+        
      })
 
      test('should not login with invalid credentials', async({page}) => { 
@@ -36,4 +38,12 @@ test.describe('login tests', () => {
         
         await expect(page.locator(loginPage.errorMessageElement)).toHaveText(loginPage.errorMessages.invalidCredentials);
       })
+
+      test('should not navigate to given path when logged out', async({page}) => { 
+
+        await loginPage.navigate('/inventory.html')
+        await expect(page).toHaveURL(loginPage.baseURL)
+        await expect(page.locator(loginPage.errorMessageElement)).toBeVisible();
+        await expect(page.locator(loginPage.errorMessageElement)).toContainText(loginPage.errorMessages.accessNotAllowed);
+      }) 
  })

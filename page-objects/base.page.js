@@ -1,11 +1,12 @@
 class BasePage{
     constructor(page){
         this.page=page;
+        this.baseURL='https://www.saucedemo.com';
     }
 
     //navigation method
-    async navigate(path=''){
-        await this.page.goto(path);
+    async navigate(path = '') {
+        await this.page.goto(`${this.baseURL}${path}`);
     }
 
     //element interaction

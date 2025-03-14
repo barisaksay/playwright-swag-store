@@ -15,7 +15,7 @@ test.describe('products page tests', () => {
         loginPage = new LoginPage(page);
         productsPage=new ProductsPage(page)
         productDetailsPage= new ProductDetailsPage(page);
-        await loginPage.navigate("https://www.saucedemo.com/");
+        await loginPage.navigate();
         const user=testUsers.users.validUser;
         await loginPage.login(user.username,user.password);
     })

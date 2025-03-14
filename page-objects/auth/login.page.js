@@ -13,7 +13,9 @@ class LoginPage extends BasePage{
         
         this.errorMessages={
             lockedOutUser:"Epic sadface: Sorry, this user has been locked out.",
-            invalidCredentials:"Epic sadface: Username and password do not match any user in this service"
+            invalidCredentials:"Epic sadface: Username and password do not match any user in this service",
+            //partial err msg because message is dynamic.
+            accessNotAllowed:"Epic sadface: You can only access"
         }
     }
 

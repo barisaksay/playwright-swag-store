@@ -11,7 +11,7 @@ test.describe('Logout tests',()=>{
     test.beforeEach(async({page})=>{
         loginPage = new LoginPage(page);
         navigationMenu = new NavigationMenuComponent(page);
-        await loginPage.navigate("https://www.saucedemo.com/");
+        await loginPage.navigate();
     })
 
     test('should logout successfully', async({page}) =>{ 
@@ -22,6 +22,9 @@ test.describe('Logout tests',()=>{
 
         await navigationMenu.expandMenu();
         await navigationMenu.logout();
+
+        await expect(page).toHaveURL(loginPage.baseURL)
+
      })
 
 })
