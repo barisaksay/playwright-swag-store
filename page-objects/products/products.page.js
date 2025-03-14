@@ -18,6 +18,10 @@ class ProductsPage extends BasePage{
         await this.page.locator(this.itemName).nth(n).click();
         return selectedItemName;
     }
+
+    async addItemToCart(n){
+        await this.page.locator(this.addToCartButton).nth(n).click();
+    }
 }
 
 module.exports=ProductsPage;
