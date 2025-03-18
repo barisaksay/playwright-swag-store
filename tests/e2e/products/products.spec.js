@@ -3,6 +3,8 @@ const LoginPage = require("../../../page-objects/auth/login.page");
 const ProductsPage = require("../../../page-objects/products/products.page");
 const ProductDetailsPage = require("../../../page-objects/products/productDetails.page");
 const NavigationMenuComponent = require('../../../page-objects/components/navigation.component');
+const CartPage = require("../../../page-objects/cart/cart.page");
+
 const testUsers = require("../../../utils/test-data/test-users.json");
 const productDetails = require("../../../utils/test-data/products.json");
 
@@ -11,12 +13,14 @@ test.describe("products page tests", () => {
   let productsPage;
   let productDetailsPage;
   let navigationMenu;
+  let cartPage;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     productsPage = new ProductsPage(page);
     productDetailsPage = new ProductDetailsPage(page);
     navigationMenu = new NavigationMenuComponent(page);
+    cartPage = new CartPage(page);
 
     await loginPage.navigate();
 
@@ -61,10 +65,7 @@ test.describe("products page tests", () => {
   test("should navigate to cart page from inventory page ", async ({ page }) => {
     await productsPage.clickElement(navigationMenu.cartButton)
 
-    //assertion after implementing cart page object
-    
-    
-
+    await expect (page).toHaveURL(loginPage.baseURL+cartPage.cartURL)
   });
   
 });

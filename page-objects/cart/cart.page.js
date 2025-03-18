@@ -11,6 +11,8 @@ class CartPage extends BasePage{
         this.removeButton='button:text("Remove")'
         this.backToInventoryButton='[data-test="back-to-products"]'
         this.continueShoppingButton='button#continue-shopping'
+        this.cartURL='/cart.html'
+
     }
 }
 
