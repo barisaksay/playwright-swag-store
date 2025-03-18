@@ -58,8 +58,13 @@ test.describe("products page tests", () => {
     await expect(page.locator(navigationMenu.cartCounter)).not.toBeVisible()
   });
 
-  test.only("should navigate to cart page from inventory page ", async ({ page }) => {
+  test("should navigate to cart page from inventory page ", async ({ page }) => {
     await productsPage.clickElement(navigationMenu.cartButton)
+
+    //assertion after implementing cart page object
+    
+    
+
   });
   
 });
