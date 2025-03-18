@@ -14,7 +14,7 @@ class ProductDetailsPage extends BasePage{
 
     //products page methods
     async addToCart(){
-        await this.page.locator().click()
+        await this.page.locator(this.addToCartButton).click()
     }   
 }
 

@@ -13,7 +13,7 @@ class NavigationMenuComponent{
     this.inventoryButton='#inventory_sidebar_link';
     this.logoutButton='#logout_sidebar_link';
     this.menuCollapseButton='#react-burger-cross-btn';
-    this.cartButton='a[data-test="shopping-cart-link]"';
+    this.cartButton='a[data-test="shopping-cart-link"]';
     this.cartCounter='[data-test="shopping-cart-badge"]';
     }
 

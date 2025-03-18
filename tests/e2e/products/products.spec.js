@@ -56,8 +56,10 @@ test.describe("products page tests", () => {
     await productsPage.removeItemFromCart(0)
 
     await expect(page.locator(navigationMenu.cartCounter)).not.toBeVisible()
+  });
 
-
+  test.only("should navigate to cart page from inventory page ", async ({ page }) => {
+    await productsPage.clickElement(navigationMenu.cartButton)
   });
   
 });
