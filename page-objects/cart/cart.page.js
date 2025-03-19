@@ -9,10 +9,8 @@ class CartPage extends BasePage{
         this.itemPrice='[data-test="inventory-item-price"]'
         this.itemDescription='[data-test="inventory-item-desc"]'
         this.removeButton='button:text("Remove")'
-        this.backToInventoryButton='[data-test="back-to-products"]'
         this.continueShoppingButton='button#continue-shopping'
         this.cartURL='/cart.html'
-
     }
 }
 
