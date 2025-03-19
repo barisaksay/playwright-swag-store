@@ -68,10 +68,12 @@ test.describe("products page tests", () => {
     await expect (page).toHaveURL(loginPage.baseURL+cartPage.cartURL)
   });
 
-  test("should sort products ", async ({ page }) => {
+  test.only("should sort products ", async ({ page }) => {
 
     await productsPage.sortItems('hilo')
 
+    let price = await page.locator(productsPage.itemPrice).nth(0).textContent();
+    price=parseFloat(price.replace('$', '').trim())
   });
   
 });

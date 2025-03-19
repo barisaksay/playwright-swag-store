@@ -18,8 +18,16 @@ class BasePage{
         await this.page.locator(selector).fill(text)
     }
 
-    async getText(selector){
-        return await this.page.locator(selector).textContent()
+    async getText(selector, index = null) {
+        const locator = this.page.locator(selector);
+        
+        if (index !== null) {
+            // Get text from the nth element
+            return await locator.nth(index).textContent();
+        } else {
+            // Get text from the first (or only) matching element
+            return await locator.textContent();
+        }
     }
 
     async isVisible(selector){
