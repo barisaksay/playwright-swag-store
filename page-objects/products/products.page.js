@@ -14,7 +14,8 @@ class ProductsPage extends BasePage{
         this.sortDropdown='select[data-test="product-sort-container"]'
         this.sortLowHigh='lohi'
         this.sortHighLow='hilo'
-
+        this.sortAZ='az'
+        this.sortZA='za'
         this.productsURL='/inventory.html'
     }
 
@@ -33,8 +34,8 @@ class ProductsPage extends BasePage{
         await this.page.locator(this.removeFromCartButton).nth(n).click();
     }
     
-    async sortItems(sortValue){
-        await this.page.locator(this.sortDropdown).selectOption({ value:`${sortValue}`})
+    async sortItems(sortOrder){
+        await this.page.locator(this.sortDropdown).selectOption({ value:`${sortOrder}`})
     }
 
 }
