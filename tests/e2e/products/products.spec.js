@@ -68,12 +68,18 @@ test.describe("products page tests", () => {
     await expect (page).toHaveURL(loginPage.baseURL+cartPage.cartURL)
   });
 
-  test.only("should sort products ", async ({ page }) => {
+  test("should sort products ", async ({ page }) => {
 
     await productsPage.sortItems('hilo')
 
-    let price = await page.locator(productsPage.itemPrice).nth(0).textContent();
-    price=parseFloat(price.replace('$', '').trim())
+    let priceItem1= await productsPage.getText(productsPage.itemPrice,0)
+    priceItem1=parseFloat(priceItem1.replace('$', '').trim())
+
+    let priceItem2= await productsPage.getText(productsPage.itemPrice,1)
+    priceItem2=parseFloat(priceItem2.replace('$', '').trim())
+
+    expect(priceItem1).toBeGreaterThan(priceItem2)
+
   });
   
 });
