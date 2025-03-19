@@ -46,4 +46,15 @@ test.describe("products page tests", () => {
     await expect(page).toHaveURL(basePage.baseURL + cartPage.cartURL);
     expect(cartItemName).toEqual(itemName);
   });
+
+  test("should remove item from cart", async ({ page }) => {
+    await productsPage.addItemToCart(1);
+    await productsPage.clickElement(navigationMenu.cartButton);
+
+    await expect(page).toHaveURL(basePage.baseURL+cartPage.cartURL)
+
+    await cartPage.clickElement(cartPage.removeButton)
+
+    await expect(page.locator(cartPage.cartItem)).not.toBeVisible()
+  });
 });

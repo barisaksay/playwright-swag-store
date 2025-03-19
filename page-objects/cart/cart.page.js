@@ -5,6 +5,7 @@ class CartPage extends BasePage{
         super(page);
 
         //cart page selectors
+        this.cartItem='[data-test="inventory-item"]'
         this.itemName='[data-test="inventory-item-name"]'
         this.itemPrice='[data-test="inventory-item-price"]'
         this.itemDescription='[data-test="inventory-item-desc"]'
