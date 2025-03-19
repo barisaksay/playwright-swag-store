@@ -10,6 +10,10 @@ class ProductsPage extends BasePage{
         this.itemName='[data-test="inventory-item-name"]'
         this.addToCartButton='button[class="btn btn_primary btn_small btn_inventory "]'
         this.removeFromCartButton='button.btn_secondary:text("Remove")'
+        this.sortDropdown='select[data-test="product-sort-container"]'
+        this.sortLowHigh='lohi'
+        this.sortHighLow='hilo'
+
         this.productsURL='/inventory.html'
     }
 
@@ -28,6 +32,9 @@ class ProductsPage extends BasePage{
         await this.page.locator(this.removeFromCartButton).nth(n).click();
     }
     
+    async sortItems(sortValue){
+        await this.page.locator(this.sortDropdown).selectOption({ value:`${sortValue}`})
+    }
 
 }
 

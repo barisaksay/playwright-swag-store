@@ -67,5 +67,11 @@ test.describe("products page tests", () => {
 
     await expect (page).toHaveURL(loginPage.baseURL+cartPage.cartURL)
   });
+
+  test("should sort products ", async ({ page }) => {
+
+    await productsPage.sortItems('hilo')
+
+  });
   
 });
