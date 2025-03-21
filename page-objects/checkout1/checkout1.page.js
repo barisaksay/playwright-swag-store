@@ -5,12 +5,12 @@ class Checkout1Page extends BasePage{
         super(page);
 
         //checkout1 page selectors
-        this.productsList ='.inventory_list'
-        this.item='[data-test="inventory-item"]'
-        this.itemName='[data-test="inventory-item-name"]'
-        this.itemPrice='[data-test="inventory-item-price"]'
-        this.addToCartButton='button[class="btn btn_primary btn_small btn_inventory "]'
-        this.removeFromCartButton='button.btn_secondary:text("Remove")'
+        this.firstNameField='[data-test="firstName"]'
+        this.lastNameField='[data-test="lastName"]'
+        this.postalCodeField='[data-test="postalCode"]'
+        this.continueButton='input[data-test="continue"]'
+        this.cancelButton='button[data-test="cancel"]'
+        this.checkout1URL='/checkout-step-one.html'
     }
 }
 
