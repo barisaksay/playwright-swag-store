@@ -7,13 +7,11 @@ const NavigationMenuComponent = require("../../../page-objects/components/naviga
 const CartPage = require("../../../page-objects/cart/cart.page");
 
 const testUsers = require("../../../utils/test-data/test-users.json");
-const productDetails = require("../../../utils/test-data/products.json");
 
 test.describe("products page tests", () => {
   let basePage;
   let loginPage;
   let productsPage;
-  let productDetailsPage;
   let navigationMenu;
   let cartPage;
   let itemName;
@@ -22,7 +20,6 @@ test.describe("products page tests", () => {
     basePage = new BasePage(page);
     loginPage = new LoginPage(page);
     productsPage = new ProductsPage(page);
-    productDetailsPage = new ProductDetailsPage(page);
     navigationMenu = new NavigationMenuComponent(page);
     cartPage = new CartPage(page);
 
