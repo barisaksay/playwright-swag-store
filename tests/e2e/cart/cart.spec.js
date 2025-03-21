@@ -57,4 +57,12 @@ test.describe("products page tests", () => {
 
     await expect(page.locator(cartPage.cartItem)).not.toBeVisible()
   });
+
+    test("should navigate back to inventory", async ({ page }) => {
+
+      await productsPage.clickElement(navigationMenu.cartButton)
+      await cartPage.clickElement(cartPage.continueShoppingButton);
+
+      await expect(page).toHaveURL(basePage.baseURL+productsPage.productsURL)
+  });
 });
