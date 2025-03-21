@@ -16,6 +16,7 @@ test.describe("products page tests", () => {
   let productDetailsPage;
   let navigationMenu;
   let cartPage;
+  let itemName;
 
   test.beforeEach(async ({ page }) => {
     basePage = new BasePage(page);
@@ -27,19 +28,21 @@ test.describe("products page tests", () => {
 
     await loginPage.navigate();
 
+    //login
     const user = testUsers.users.validUser;
     await loginPage.login(user.username, user.password);
-  });
 
-  test("correct item added to cart", async ({ page }) => {
+    /*below code is moved into beforeEach block to reduce repetition in individual tests  */
     //get name of the item before performing click action
-    const itemName = await productsPage.getText(productsPage.itemName, 1);
+    itemName = await productsPage.getText(productsPage.itemName, 1);
 
     //perform click action
     await productsPage.addItemToCart(1);
+  });
 
+  test("correct item added to cart", async ({ page }) => {
     await productsPage.clickElement(navigationMenu.cartButton);
-    
+
     //get name of the item at cart page
     const cartItemName = await cartPage.getText(cartPage.itemName);
 
@@ -48,21 +51,20 @@ test.describe("products page tests", () => {
   });
 
   test("should remove item from cart", async ({ page }) => {
-    await productsPage.addItemToCart(1);
+    //await productsPage.addItemToCart(1);
     await productsPage.clickElement(navigationMenu.cartButton);
 
-    await expect(page).toHaveURL(basePage.baseURL+cartPage.cartURL)
+    await expect(page).toHaveURL(basePage.baseURL + cartPage.cartURL);
 
-    await cartPage.clickElement(cartPage.removeButton)
+    await cartPage.clickElement(cartPage.removeButton);
 
-    await expect(page.locator(cartPage.cartItem)).not.toBeVisible()
+    await expect(page.locator(cartPage.cartItem)).not.toBeVisible();
   });
 
-    test("should navigate back to inventory", async ({ page }) => {
+  test("should navigate back to inventory", async ({ page }) => {
+    await productsPage.clickElement(navigationMenu.cartButton);
+    await cartPage.clickElement(cartPage.continueShoppingButton);
 
-      await productsPage.clickElement(navigationMenu.cartButton)
-      await cartPage.clickElement(cartPage.continueShoppingButton);
-
-      await expect(page).toHaveURL(basePage.baseURL+productsPage.productsURL)
+    await expect(page).toHaveURL(basePage.baseURL + productsPage.productsURL);
   });
 });
