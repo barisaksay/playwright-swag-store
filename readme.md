@@ -55,10 +55,10 @@ The framework includes **GitHub Actions** configuration for continuous testing. 
 
 ## Best Practices
 
-Keep page objects focused on a single page or component  
-Centralize selectors at the top of page object classes  
-Use explicit waits instead of arbitrary timeouts  
-Keep test data separate from test logic  
-Clean up application state between tests  
+- Keep page objects focused on a single page or component.  
+- Centralize selectors at the top of page object classes.  
+- Use explicit waits instead of arbitrary timeouts.  
+- Keep test data separate from test logic.  
+- Clean up application state between tests.  
 
 
