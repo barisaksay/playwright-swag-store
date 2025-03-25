@@ -46,12 +46,9 @@ npm run test:tag "@your-tag"
 
 ## Key Concepts
 
-**Page Object Model**: Each page has a corresponding class that encapsulates its elements and actions
-Component-Based Architecture: Reusable UI components like headers and navigation menus
+**Page Object Model**: Each page has a corresponding class that encapsulates its elements and actions  
+**Component-Based Architecture**: Reusable UI components like headers and navigation menus  
 **Test Data Management**: External JSON files store test data (users, products, etc.)
-
-**Component-Based Architecture**: Reusable UI components like headers and navigation menus
-Test Data Management: External JSON files store test data (users, products, etc.)
 
 ## CI/CD Integration
 The framework includes GitHub Actions configuration for continuous testing. Tests are run at every commit or merge to main branch.
