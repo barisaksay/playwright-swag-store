@@ -51,14 +51,14 @@ npm run test:tag "@your-tag"
 **Test Data Management**: External JSON files store test data (users, products, etc.)
 
 ## CI/CD Integration
-The framework includes GitHub Actions configuration for continuous testing. Tests are run at every commit or merge to main branch.
+The framework includes **GitHub Actions** configuration for continuous testing. Tests are run at every commit or merge to main branch.
 
 ## Best Practices
 
-Keep page objects focused on a single page or component
-Centralize selectors at the top of page object classes
-Use explicit waits instead of arbitrary timeouts
-Keep test data separate from test logic
-Clean up application state between tests
+Keep page objects focused on a single page or component  
+Centralize selectors at the top of page object classes  
+Use explicit waits instead of arbitrary timeouts  
+Keep test data separate from test logic  
+Clean up application state between tests  
 
 
