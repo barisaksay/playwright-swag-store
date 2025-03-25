@@ -11,6 +11,11 @@
     "invalidUser":{
       "username":"invalid_username",
       "password":"wrong_pwd"
+    },
+    "checkoutUser":{
+      "firstname":"John",
+      "lastname":"Doe",
+      "postalcode":"S1 D2"
     }
   }
 }

@@ -7,7 +7,6 @@ const CartPage = require("../../../page-objects/cart/cart.page");
 const Checkout1Page = require('../../../page-objects/checkout1/checkout1.page')
 
 const testUsers = require("../../../utils/test-data/test-users.json");
-const { checkPrime } = require("crypto");
 
 test.describe("products page tests", () => {
   let basePage;
@@ -16,6 +15,7 @@ test.describe("products page tests", () => {
   let navigationMenu;
   let cartPage;
   let checkout1Page;
+  const checkoutUser = testUsers.users.checkoutUser;
 
   test.beforeEach(async ({ page }) => {
     basePage = new BasePage(page);
@@ -40,6 +40,14 @@ test.describe("products page tests", () => {
     await cartPage.clickElement(cartPage.checkoutButton);
     await expect(page).toHaveURL(basePage.baseURL+checkout1Page.checkout1URL);
    })
+
+   test('should proceed after filling fields', async() => { 
+    await cartPage.clickElement(cartPage.checkoutButton);
+    await checkout1Page.fillInputField(checkout1Page.firstNameField,checkoutUser.firstname)
+    await checkout1Page.fillInputField(checkout1Page.lastNameField,checkoutUser.lastname)
+    await checkout1Page.fillInputField(checkout1Page.postalCodeField,checkoutUser.postalcode)
+
+    })
 
  
 });
