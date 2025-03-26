@@ -37,7 +37,7 @@ test.describe("products page tests", () => {
     await productsPage.addItemToCart(1);
   });
 
-  test("correct item added to cart", async ({ page }) => {
+  test("correct item added to cart @regression", async ({ page }) => {
     await productsPage.clickElement(navigationMenu.cartButton);
 
     //get name of the item at cart page
@@ -47,7 +47,7 @@ test.describe("products page tests", () => {
     expect(cartItemName).toEqual(itemName);
   });
 
-  test("should remove item from cart", async ({ page }) => {
+  test("should remove item from cart @regression", async ({ page }) => {
     //await productsPage.addItemToCart(1);
     await productsPage.clickElement(navigationMenu.cartButton);
 

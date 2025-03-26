@@ -14,7 +14,7 @@ test.describe('Logout tests',()=>{
         await loginPage.navigate();
     })
 
-    test('should logout successfully', async({page}) =>{ 
+    test('should logout successfully @regression', async({page}) =>{ 
         const user=testUsers.users.validUser;
 
         await loginPage.login(user.username,user.password);

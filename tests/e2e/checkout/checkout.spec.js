@@ -33,21 +33,29 @@ test.describe("products page tests", () => {
     //perform click action
     await productsPage.addItemToCart(1);
     await navigationMenu.goToCart()
+
+    await cartPage.clickElement(cartPage.checkoutButton);
   });
 
   test('should navigate to checkout1', async({page}) => { 
     
-    await cartPage.clickElement(cartPage.checkoutButton);
     await expect(page).toHaveURL(basePage.baseURL+checkout1Page.checkout1URL);
    })
 
-   test('should proceed after filling fields', async() => { 
-    await cartPage.clickElement(cartPage.checkoutButton);
+   test('should proceed after filling fields', async({page}) => { 
     await checkout1Page.fillInputField(checkout1Page.firstNameField,checkoutUser.firstname)
     await checkout1Page.fillInputField(checkout1Page.lastNameField,checkoutUser.lastname)
     await checkout1Page.fillInputField(checkout1Page.postalCodeField,checkoutUser.postalcode)
+    await checkout1Page.clickElement(checkout1Page.continueButton)
 
+    await expect(page).toHaveURL(basePage.baseURL+"/checkout-step-two.html")
     })
 
- 
+    test.skip('should throw error when a field is empty @regression', async() => { 
+      await checkout1Page.fillInputField(checkout1Page.firstNameField,checkoutUser.firstname)
+      //leave lastname field empty
+      await checkout1Page.fillInputField(checkout1Page.postalCodeField,checkoutUser.postalcode)
+      })
+  
+
 });

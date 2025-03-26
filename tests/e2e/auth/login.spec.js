@@ -14,7 +14,7 @@ test.describe('login tests', () => {
         
     })
 
-    test('login with valid credentials',async({page})=>{
+    test('login with valid credentials @regression',async({page})=>{
         const user=testUsers.users.validUser;
 
         await loginPage.login(user.username,user.password);
@@ -31,7 +31,7 @@ test.describe('login tests', () => {
         
      })
 
-     test('should not login with invalid credentials', async({page}) => { 
+     test('should not login with invalid credentials @regression', async({page}) => { 
         const invalidUser=testUsers.users.invalidUser
         
         await loginPage.login(invalidUser.username,invalidUser.password);
@@ -39,7 +39,7 @@ test.describe('login tests', () => {
         await expect(page.locator(loginPage.errorMessageElement)).toHaveText(loginPage.errorMessages.invalidCredentials);
       })
 
-      test('should not navigate to given path when logged out', async({page}) => { 
+      test('should not navigate to given path when logged out @regression', async({page}) => { 
 
         await loginPage.navigate('/inventory.html')
         await expect(page).toHaveURL(loginPage.baseURL)

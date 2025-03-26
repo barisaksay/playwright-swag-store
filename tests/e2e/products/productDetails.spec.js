@@ -33,7 +33,7 @@ test.describe('product details page tests', () => {
 
      })
 
-     test('should add item to cart from product details page', async({page}) => { 
+     test('should add item to cart from product details page @regression', async({page}) => { 
 
         await productsPage.selectItem(0);
         await productDetailsPage.addToCart();

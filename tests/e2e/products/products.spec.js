@@ -28,19 +28,19 @@ test.describe("products page tests", () => {
     await loginPage.login(user.username, user.password);
   });
 
-  test("correct number of items are displayed", async ({ page }) => {
+  test("correct number of items are displayed @regression", async ({ page }) => {
     const numberOfProducts = productDetails.items.length;
 
     await expect(page.locator(productsPage.item)).toHaveCount(numberOfProducts);
   });
 
-  test("item name should be clickable ", async ({ page }) => {
+  test("item name should be clickable", async ({ page }) => {
     const selectedItemName = await productsPage.selectItem(1);
 
     await expect(page.locator(productDetailsPage.itemName)).toHaveText(selectedItemName);
   });
 
-  test("should add item to cart from inventory page ", async ({ page }) => {
+  test("should add item to cart from inventory page @regression", async ({ page }) => {
     await productsPage.addItemToCart(0)
 
     await expect(page.locator(navigationMenu.cartCounter)).toBeVisible()
@@ -55,7 +55,7 @@ test.describe("products page tests", () => {
 
   });
 
-  test("should remove from cart via inventory page ", async ({ page }) => {
+  test("should remove from cart via inventory page @regression", async ({ page }) => {
     await productsPage.addItemToCart(0)
     await productsPage.removeItemFromCart(0)
 
