@@ -38,6 +38,21 @@ class ProductsPage extends BasePage{
         await this.page.locator(this.sortDropdown).selectOption({ value:`${sortOrder}`})
     }
 
+    async getAllProductNames() {
+        const productNameElements = await this.page.locator(this.itemName);
+        const count = await productNameElements.count();
+    
+        const productNames = [];
+    
+        for (let i = 0; i < count; i++) {
+            const text = await productNameElements.nth(i).textContent();
+            productNames.push(text.trim());
+        }
+
+        return productNames;
+    }
+    
+
 }
 
 module.exports=ProductsPage;

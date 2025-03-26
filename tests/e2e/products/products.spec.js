@@ -81,5 +81,14 @@ test.describe("products page tests", () => {
     expect(priceItem1).toBeGreaterThan(priceItem2)
 
   });
-  
+
+  test("correct items are displayed - compare to product.json ", async ({ page }) => {
+    const itemNames = await productsPage.getAllProductNames()
+
+    const jsonNames=productDetails.items.map(item => item.name);
+
+    expect(itemNames).toEqual(jsonNames)
+    
+
+  });
 });
